@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itheima.dao.CheckItemDAO">
+
+
+    <insert id="add" parameterType="com.itheima.pojo.CheckItem">
+        insert into t_checkitem(code,name,sex,age,price,type,remark,attention) values
+        (#{code},#{name},#{sex},#{age},#{price},#{type},#{remark},#{attention})
+    </insert>
+
+
+    <select id="selectByCondition" parameterType="String" resultType="com.itheima.pojo.CheckItem">
+        select * from t_checkitem
+        <if test="value!=null and value.length>0">
+            where code=#{value} or name=#{value}
+        </if>
+    </select>
+    <!--新增-->
+<!--    <insert id="add" parameterType="com.itheima.pojo.CheckGroup">-->
+<!--        <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">-->
+<!--            SELECT LAST_INSERT_ID()-->
+<!--        </selectKey>-->
+<!--        insert into t_checkgroup(code,name,sex,helpCode,remark,attention)-->
+<!--        values-->
+<!--        (#{code},#{name},#{sex},#{helpCode},#{remark},#{attention})-->
+<!--    </insert>-->
+<!--    &lt;!&ndash;设置检查组和检查项的关联关系&ndash;&gt;-->
+<!--    <insert id="setCheckGroupAndCheckItem" parameterType="hashmap">-->
+<!--        insert into t_checkgroup_checkitem(checkgroup_id,checkitem_id)-->
+<!--        values-->
+<!--            (#{checkgroup_id},#{checkitem_id})-->
+<!--    </insert>-->
+</mapper>
