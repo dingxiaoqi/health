@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/checkitem")
 public class CheckItemController {
 
+    // 注入远程dubbo服务接口
     @Reference
     private CheckItemService checkItemService;
 
